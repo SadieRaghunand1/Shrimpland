@@ -107,6 +107,18 @@ public class BankManager : MonoBehaviour
         riskTx.text = risk.ToString() + "%";
     }
 
+    //BigFuntionBigDeal
+    public void ChangeBankStatement()
+    {
+        //Update text when any of these variables change, animations and color changes should not be done here, instead done where the variable value gets chabged
+        ticketText.text = "$" + ticketGains.ToString();
+        attractionText.text = "$" + attractionGains.ToString();
+        facilityText.text = "$" + facilitiesGains.ToString();
+        maintenanceText.text = "$" + maintenanceLosses.ToString();
+        salaryText.text = "$" + salaryLosses.ToString();
+        legalText.text = "$" + legalLosses.ToString();
+    }
+
 
     public void ChangeEmployeesAndAttendees(int _employeeChange, int _attendeesChange)
     {
@@ -146,6 +158,8 @@ public class BankManager : MonoBehaviour
     {
         //Recurrs every set number of seconds, salary * employees, uses decrease
         DecreaseBalance(employees * salary);
+        salaryLosses -= (employees * salary);
+        ChangeBankStatement();
         StartCoroutine(WaitToPayEmployees());
     }
 
@@ -153,6 +167,8 @@ public class BankManager : MonoBehaviour
     {
         //This does not change all in one go like employee salaries, instead more attendees there are the more often they are charged ticket price
         IncreaseBalance(ticketPrice);
+        ticketGains += ticketPrice;
+        ChangeBankStatement();
         //StartCoroutine(WaitToChargeTickets());
     }
     #endregion

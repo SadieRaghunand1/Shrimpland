@@ -4148,10 +4148,16 @@ MonoBehaviour:
   ticketPrice: 50
   employees: 0
   salary: 15
-  increaseRate: 30
+  increaseRate: 10
   totalBalanceTx: {fileID: 703287465}
   riskTx: {fileID: 1656606016}
   storeCanvas: {fileID: 2028853665}
+  ticketText: {fileID: 1081572045}
+  attractionText: {fileID: 1550992238}
+  facilityText: {fileID: 1690316702}
+  maintenanceText: {fileID: 1637082203}
+  salaryText: {fileID: 977513208}
+  legalText: {fileID: 1837324997}
   plumbing: 1
   food: 1
   electrical: 1

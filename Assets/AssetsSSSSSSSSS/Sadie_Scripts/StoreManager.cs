@@ -25,6 +25,9 @@ public class StoreManager : MonoBehaviour
         bankManager.plumbing = BankManager.FacilitiesStatus.UPGRADED;
         bankManager.DecreaseBalance(plumbingStats[0]);
         bankManager.DecreaseRisk(plumbingStats[1]);
+
+        bankManager.maintenanceLosses -= plumbingStats[0];
+        bankManager.ChangeBankStatement();
     }
 
     public void UpgradeFood()
@@ -32,6 +35,9 @@ public class StoreManager : MonoBehaviour
         bankManager.food = BankManager.FacilitiesStatus.UPGRADED;
         bankManager.DecreaseBalance(foodStats[0]);
         bankManager.DecreaseRisk(foodStats[1]);
+
+        bankManager.maintenanceLosses -= foodStats[0];
+        bankManager.ChangeBankStatement();
     }
 
     public void UpgradeElectrical()
@@ -39,6 +45,9 @@ public class StoreManager : MonoBehaviour
         bankManager.electrical = BankManager.FacilitiesStatus.UPGRADED;
         bankManager.DecreaseBalance(electricalStats[0]);
         bankManager.DecreaseRisk(electricalStats[1]);
+
+        bankManager.maintenanceLosses -= electricalStats[0];
+        bankManager.ChangeBankStatement();
     }
 
     public void UpgradeJanitorial()
@@ -46,5 +55,8 @@ public class StoreManager : MonoBehaviour
         bankManager.janitorial = BankManager.FacilitiesStatus.UPGRADED;
         bankManager.DecreaseBalance(janitorialStats[0]);
         bankManager.DecreaseRisk(janitorialStats[1]);
+
+        bankManager.maintenanceLosses -= janitorialStats[0];
+        bankManager.ChangeBankStatement();
     }
 }
