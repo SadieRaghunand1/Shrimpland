@@ -77,7 +77,7 @@ public class BankManager : MonoBehaviour
     public void DecreaseBalance(float _cost)
     {
         currentBalance -= _cost;
-        totalBalanceTx.text = "$" + currentBalance.ToString();
+        totalBalanceTx.text = "$" + currentBalance.ToString(); //When in other scenes this kind of thing does not work, maybe just make map and stuff open over bank sheet, all one scene?
     }
 
     public void IncreaseBalance(float _gain)

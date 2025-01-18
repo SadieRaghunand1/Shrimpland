@@ -17,19 +17,22 @@ public class FacilityManager : MonoBehaviour
     public FacilityData[] facilityDatas;
     public int facilityIndex;
     private BankManager bankManager;
+    private GameManager gameManager;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI[] things;
     [SerializeField] private TextMeshProUGUI[] statusesWritten;
     [SerializeField] private Button[] fixButtons;
+    [SerializeField] private Button loadBank;
 
     [SerializeField] private Canvas map;
     [SerializeField] private Canvas sheet;
     public void Start()
     {
         bankManager = FindAnyObjectByType<BankManager>();
-
+        gameManager = FindAnyObjectByType<GameManager>();
+        loadBank.onClick.AddListener(() => { gameManager.LoadBankSheet(); });
         //Test
         FillInInfo(facilityIndex);
     }

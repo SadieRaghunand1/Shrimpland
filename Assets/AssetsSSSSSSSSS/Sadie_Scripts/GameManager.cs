@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
+
+public class GameManager : MonoBehaviour
+{
+    //Build indexes will be changed
+
+    [SerializeField] private Canvas mapCanvas;
+    [SerializeField] private Canvas facilitySheetCanvas;
+    [SerializeField] private Canvas bankSheetCanvas;
+    [SerializeField] private Canvas otherCanvas;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void LoadBankSheet()
+    {
+        //SceneManager.LoadScene(0);
+        mapCanvas.enabled = false;
+        facilitySheetCanvas.enabled = false;
+        bankSheetCanvas.enabled = true;
+        otherCanvas.enabled = false;
+    }
+
+    public void LoadMap()
+    {
+        //SceneManager.LoadScene(1);
+        mapCanvas.enabled = true;
+        facilitySheetCanvas.enabled = false;
+        bankSheetCanvas.enabled = false;
+        otherCanvas.enabled = true;
+    }
+
+    
+}
