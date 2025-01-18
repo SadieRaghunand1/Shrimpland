@@ -61,11 +61,16 @@ public class BankManager : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
+
+
         totalBalanceTx.text = "$" + currentBalance.ToString();
         riskTx.text = risk.ToString() + "%";
         StartCoroutine(WaitToPayEmployees());
         //StartCoroutine(WaitToChargeTickets());
         StartCoroutine(IncreaseEmployeesAndAttendees());
+
+
     }
 
     #region Increase/Decrease variables

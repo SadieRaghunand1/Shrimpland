@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using TMPro.EditorUtilities;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -81,5 +80,3 @@ public class DialogueManager : MonoBehaviour
     }
 }
 
-
-//https://www.youtube.com/watch?v=ObSgyhBa-bo
