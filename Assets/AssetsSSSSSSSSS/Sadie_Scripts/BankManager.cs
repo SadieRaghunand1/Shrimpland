@@ -31,11 +31,28 @@ public class BankManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI riskTx;
     [SerializeField] Canvas storeCanvas;
 
+    [SerializeField] private TextMeshProUGUI ticketText;
+    [SerializeField] private TextMeshProUGUI attractionText;
+    [SerializeField] private TextMeshProUGUI facilityText;
+    [SerializeField] private TextMeshProUGUI maintenanceText;
+    [SerializeField] private TextMeshProUGUI salaryText;
+    [SerializeField] private TextMeshProUGUI legalText;
+
     [Header("Facilities")]
     public FacilitiesStatus plumbing;
     public FacilitiesStatus food;
     public FacilitiesStatus electrical;
     public FacilitiesStatus janitorial;
+
+
+    [Header("Totals")]
+    public float ticketGains;
+    public float attractionGains;
+    public float facilitiesGains;
+    public float maintenanceLosses;
+    public float salaryLosses;
+    public float legalLosses;
+
 
     private void Start()
     {
