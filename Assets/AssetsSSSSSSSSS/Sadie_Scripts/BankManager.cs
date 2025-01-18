@@ -37,6 +37,9 @@ public class BankManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI maintenanceText;
     [SerializeField] private TextMeshProUGUI salaryText;
     [SerializeField] private TextMeshProUGUI legalText;
+    [SerializeField] private TextMeshProUGUI assetText;
+    [SerializeField] private TextMeshProUGUI liabilityText;
+
 
     [Header("Facilities")]
     public FacilitiesStatus plumbing;
@@ -52,6 +55,8 @@ public class BankManager : MonoBehaviour
     public float maintenanceLosses;
     public float salaryLosses;
     public float legalLosses;
+    public float assetTotals;
+    public float liabilityTotals;
 
 
     private void Start()
@@ -117,6 +122,13 @@ public class BankManager : MonoBehaviour
         maintenanceText.text = "$" + maintenanceLosses.ToString();
         salaryText.text = "$" + salaryLosses.ToString();
         legalText.text = "$" + legalLosses.ToString();
+
+        assetTotals = ticketGains + attractionGains + facilitiesGains;
+        liabilityTotals = maintenanceLosses + salaryLosses + legalLosses;
+
+        assetText.text = "$" + assetTotals;
+        liabilityText.text = "$" + liabilityTotals;
+
     }
 
 
@@ -131,6 +143,7 @@ public class BankManager : MonoBehaviour
         employees += _employeeChange;
         attendees += _attendeesChange;
 
+        TicketSales(_attendeesChange);
         IncreaseRisk(2);
     }
     #endregion
@@ -163,13 +176,13 @@ public class BankManager : MonoBehaviour
         StartCoroutine(WaitToPayEmployees());
     }
 
-    void TicketSales()
+    void TicketSales(int _attendeeChange)
     {
         //This does not change all in one go like employee salaries, instead more attendees there are the more often they are charged ticket price
-        IncreaseBalance(ticketPrice);
+        IncreaseBalance(ticketPrice * _attendeeChange);
         ticketGains += ticketPrice;
         ChangeBankStatement();
-        //StartCoroutine(WaitToChargeTickets());
+        StartCoroutine(WaitToChargeTickets());
     }
     #endregion
 
@@ -189,7 +202,7 @@ public class BankManager : MonoBehaviour
         Debug.Log("Wait to charge");
         yield return new WaitForSeconds(0); //Subject to change
 
-        TicketSales();
+        //TicketSales();
     }
 
 
