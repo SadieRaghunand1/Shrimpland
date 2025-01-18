@@ -13,6 +13,7 @@ public class BankManager : MonoBehaviour
         BROKEN
     };
 
+    //Tis is a new comment
 
     public float currentBalance;
     public float risk; //Max at 100, min 0
