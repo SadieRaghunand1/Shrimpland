@@ -23,6 +23,9 @@ public class FacilityManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] things;
     [SerializeField] private TextMeshProUGUI[] statusesWritten;
     [SerializeField] private Button[] fixButtons;
+
+    [SerializeField] private Canvas map;
+    [SerializeField] private Canvas sheet;
     public void Start()
     {
         bankManager = FindAnyObjectByType<BankManager>();
@@ -54,6 +57,15 @@ public class FacilityManager : MonoBehaviour
             bankManager.DecreaseBalance(200);
             bankManager.DecreaseRisk(1);
         }
+    }
+
+    public void SetFacilityIndex(int _facilityIndex)
+    {
+        facilityIndex = _facilityIndex;
+        map.enabled = false;
+        sheet.enabled = true;
+
+        FillInInfo(facilityIndex);
     }
 
 }
