@@ -14,7 +14,10 @@ public class fallingPiece : MonoBehaviour
         Instantiate(losePic);
     }
 
-
+    private void OnMouseDown()
+    {
+        Destroy(gameObject);
+    }
 
 
 

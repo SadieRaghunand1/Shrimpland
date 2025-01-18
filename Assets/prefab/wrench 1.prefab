@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8145607057177859053
+--- !u!1001 &8984122852981061271
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,11 +10,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
       propertyPath: m_Name
-      value: wrench
+      value: wrench 1
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878350319992209165, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,23 +74,26 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8882872845346927734}
+      addedObject: {fileID: 4887878384156698726}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6476868493107107411}
+      addedObject: {fileID: 58002336878095934}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 515141208068511209}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
---- !u!1 &1275500723424953477 stripped
+--- !u!1 &2023940816385892863 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
-  m_PrefabInstance: {fileID: 8145607057177859053}
+  m_PrefabInstance: {fileID: 8984122852981061271}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8882872845346927734
+--- !u!114 &4887878384156698726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275500723424953477}
+  m_GameObject: {fileID: 2023940816385892863}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37849ceed04d20549804ca2bd2575132, type: 3}
@@ -86,13 +101,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   losePic: {fileID: 39239169042111987, guid: 119fc7d027039994d8dfae6af6ecc3a0, type: 3}
   lose: 0
---- !u!61 &6476868493107107411
+--- !u!61 &58002336878095934
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275500723424953477}
+  m_GameObject: {fileID: 2023940816385892863}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -131,3 +146,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.31, y: 0.47000003}
   m_EdgeRadius: 0
+--- !u!50 &515141208068511209
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023940816385892863}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0.4
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
