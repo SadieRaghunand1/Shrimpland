@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class WhackAShrimp : MonoBehaviour
 {
-    bool isBroken = true;
+    bool isBroken = false;
+    [SerializeField] private Animator animator;
+
+    GameObject shrimp;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +25,11 @@ public class WhackAShrimp : MonoBehaviour
     {
     if (isBroken == false) {
         Debug.Log("Boioioioioing");
+            animator.SetTrigger("Appear");
         }
     else if (isBroken == true) {
         Debug.Log("Shrimp machine broke");
+
         }  
 
     }
