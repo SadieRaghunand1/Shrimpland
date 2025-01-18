@@ -10499,13 +10499,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bac8e87178f7140b44a93370b859e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facilityManager: {fileID: 53307759}
   currentBalance: 500000
   risk: 70
+  increaseRateUtilities: 10
   attendees: 0
   ticketPrice: 50
   employees: 0
   salary: 15
-  increaseRate: 10
+  increaseRatePeople: 20
   totalBalanceTx: {fileID: 703287465}
   riskTx: {fileID: 1656606016}
   storeCanvas: {fileID: 2028853665}

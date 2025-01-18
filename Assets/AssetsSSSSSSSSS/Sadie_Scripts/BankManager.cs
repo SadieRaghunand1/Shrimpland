@@ -14,17 +14,20 @@ public class BankManager : MonoBehaviour
     };
 
     //Tis is a new comment
-
+    private GameManager gameManager;
+    [SerializeField] private FacilityManager facilityManager;
     public float currentBalance;
     public float risk; //Max at 100, min 0
     private float goal = 100000000f; //1 krillion, when currentBalance hits this, win; if hist 0, lose
+
+    public float increaseRateUtilities;
 
     [Header("People")]
     public float attendees;
     public float ticketPrice;
     public float employees;
     public float salary;
-    public float increaseRate;
+    public float increaseRatePeople;
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI totalBalanceTx;
@@ -62,7 +65,7 @@ public class BankManager : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-
+        gameManager = FindAnyObjectByType<GameManager>();
 
         totalBalanceTx.text = "$" + currentBalance.ToString();
         riskTx.text = risk.ToString() + "%";
@@ -70,6 +73,8 @@ public class BankManager : MonoBehaviour
         //StartCoroutine(WaitToChargeTickets());
         StartCoroutine(IncreaseEmployeesAndAttendees());
 
+
+        StartCoroutine(BreakFacilities());
 
     }
 
@@ -192,6 +197,123 @@ public class BankManager : MonoBehaviour
     #endregion
 
 
+    #region Facilities
+
+    public void ChangeFacilityStatus()
+    {
+        Debug.Log("Facility status changed");
+        
+        int _plumbingChance;
+        int _foodChance;
+        int _electricalChance;
+        int _janitorialChance;
+
+        //Use facility enum + risk to determine how often this breaks
+
+        //Plumbing:
+        if (plumbing == FacilitiesStatus.UPGRADED)
+        {
+            _plumbingChance = Random.Range(0, 200);
+        }
+        else
+        {
+            _plumbingChance = Random.Range(0, 100);
+
+        }
+       
+        if(_plumbingChance <= risk)
+        {
+            int _num = Random.Range(1, 2);
+
+            for(int i = 0; i <= _num; i++)
+            {
+                int _index = Random.Range(0, 6);
+                facilityManager.facilityDatas[0].statuses[_index] = false;
+                IncreaseRisk(1);
+            }
+        }
+
+
+
+        //Food
+        if (food == FacilitiesStatus.UPGRADED)
+        {
+            _foodChance = Random.Range(0, 200);
+        }
+        else
+        {
+            _foodChance = Random.Range(0, 100);
+
+        }
+
+        if (_foodChance <= risk)
+        {
+            int _num2 = Random.Range(1, 2);
+
+            for (int i = 0; i <= _num2; i++)
+            {
+                int _index2 = Random.Range(0, 6);
+                facilityManager.facilityDatas[1].statuses[_index2] = false;
+                IncreaseRisk(1);
+            }
+        }
+
+
+        //Electrical
+        if (electrical == FacilitiesStatus.UPGRADED)
+        {
+            _electricalChance = Random.Range(0, 200);
+        }
+        else
+        {
+            _electricalChance = Random.Range(0, 100);
+
+        }
+
+        if (_electricalChance <= risk)
+        {
+            int _num3 = Random.Range(1, 2);
+
+            for (int i = 0; i <= _num3; i++)
+            {
+                int _index3 = Random.Range(0, 6);
+                facilityManager.facilityDatas[2].statuses[_index3] = false;
+                IncreaseRisk(1);
+            }
+        }
+
+
+        //Janitorial
+        if (janitorial == FacilitiesStatus.UPGRADED)
+        {
+            _janitorialChance = Random.Range(0, 200);
+        }
+        else
+        {
+            _janitorialChance = Random.Range(0, 100);
+
+        }
+
+        if (_janitorialChance <= risk)
+        {
+            int _num4 = Random.Range(1, 2);
+
+            for (int i = 0; i <= _num4; i++)
+            {
+                int _index4 = Random.Range(0, 6);
+                facilityManager.facilityDatas[3].statuses[_index4] = false;
+                IncreaseRisk(1);
+            }
+        }
+
+        StartCoroutine(BreakFacilities());
+
+    }
+
+
+    #endregion
+
+
     #region enumerators
     IEnumerator WaitToPayEmployees()
     {
@@ -213,7 +335,7 @@ public class BankManager : MonoBehaviour
 
     IEnumerator IncreaseEmployeesAndAttendees()
     {
-        yield return new WaitForSeconds(increaseRate); //Increase rate can change based on how good the park is os there is more attendees, or ca be flat
+        yield return new WaitForSeconds(increaseRatePeople); //Increase rate can change based on how good the park is os there is more attendees, or ca be flat
         if(attendees % 20 == 0)
         {
             ChangeEmployeesAndAttendees(1, 5);
@@ -226,6 +348,12 @@ public class BankManager : MonoBehaviour
 
         StartCoroutine(IncreaseEmployeesAndAttendees());
 
+    }
+
+    IEnumerator BreakFacilities()
+    {
+        yield return new WaitForSeconds(increaseRateUtilities);
+        ChangeFacilityStatus();
     }
 
     #endregion
