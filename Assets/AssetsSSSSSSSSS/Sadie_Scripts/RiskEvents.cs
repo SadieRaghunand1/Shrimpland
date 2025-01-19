@@ -55,6 +55,7 @@ public class RiskEvents : MonoBehaviour
         bankManager.DecreaseBalance(currentLawsuit.payout);
         bankManager.legalLosses -= currentLawsuit.payout;
         bankManager.ChangeBankStatement();
+        bankManager.legalAnim.SetTrigger("LoseMoney");
 
         outcome.color = Color.blue;
         outcome.text = "Settled";
@@ -71,6 +72,7 @@ public class RiskEvents : MonoBehaviour
             bankManager.DecreaseBalance(currentLawsuit.fightFee);
             bankManager.legalLosses -= currentLawsuit.fightFee;
             bankManager.ChangeBankStatement();
+            bankManager.legalAnim.SetTrigger("LoseMoney");
             //Some visual indication that the case is lose
             outcome.color = Color.red;
             outcome.text = "Lost";

@@ -61,6 +61,14 @@ public class BankManager : MonoBehaviour
     public float assetTotals;
     public float liabilityTotals;
 
+    [Header("Animators")]
+    public  Animator ticketAnim;
+    public Animator attractionAnim;
+    public Animator facilityAnim;
+    public Animator maintenanceAnim;
+    public Animator salaryAnim;
+    public Animator legalAnim;
+
 
     private void Start()
     {
@@ -179,19 +187,33 @@ public class BankManager : MonoBehaviour
 
     void PayEmployees()
     {
+        float _temp = salaryLosses;
         //Recurrs every set number of seconds, salary * employees, uses decrease
         DecreaseBalance(employees * salary);
         salaryLosses -= (employees * salary);
         ChangeBankStatement();
+
+        if(salaryLosses != _temp)
+        {
+            salaryAnim.SetTrigger("LoseMoney");
+        }
+        
         StartCoroutine(WaitToPayEmployees());
     }
 
     void TicketSales(int _attendeeChange)
     {
+        float _temp = ticketGains;
         //This does not change all in one go like employee salaries, instead more attendees there are the more often they are charged ticket price
         IncreaseBalance(ticketPrice * _attendeeChange);
         ticketGains += ticketPrice;
         ChangeBankStatement();
+
+        if(ticketGains != _temp)
+        {
+            ticketAnim.SetTrigger("GetMoney");
+        }
+        
         StartCoroutine(WaitToChargeTickets());
     }
     #endregion

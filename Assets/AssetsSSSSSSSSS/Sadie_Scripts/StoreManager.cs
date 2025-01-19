@@ -28,6 +28,7 @@ public class StoreManager : MonoBehaviour
 
         bankManager.maintenanceLosses -= plumbingStats[0];
         bankManager.ChangeBankStatement();
+        bankManager.maintenanceAnim.SetTrigger("LoseMoney");
     }
 
     public void UpgradeFood()
@@ -38,6 +39,7 @@ public class StoreManager : MonoBehaviour
 
         bankManager.maintenanceLosses -= foodStats[0];
         bankManager.ChangeBankStatement();
+        bankManager.maintenanceAnim.SetTrigger("LoseMoney");
     }
 
     public void UpgradeElectrical()
@@ -48,6 +50,7 @@ public class StoreManager : MonoBehaviour
 
         bankManager.maintenanceLosses -= electricalStats[0];
         bankManager.ChangeBankStatement();
+        bankManager.maintenanceAnim.SetTrigger("LoseMoney");
     }
 
     public void UpgradeJanitorial()
@@ -58,5 +61,6 @@ public class StoreManager : MonoBehaviour
 
         bankManager.maintenanceLosses -= janitorialStats[0];
         bankManager.ChangeBankStatement();
+        bankManager.maintenanceAnim.SetTrigger("LoseMoney");
     }
 }
