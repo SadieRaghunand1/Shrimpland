@@ -44,7 +44,8 @@ public class FacilityManager : MonoBehaviour
     public void FillInInfo(int _index)
     {
         bought[_index] = true;
-        mapImages[_index].enabled = false;
+        //mapImages[_index].enabled = false;
+        mapImages[_index].color = new Color(255, 255, 255, 0);
         //_index correponds to the index of each facility in above array
         title.text = facilityDatas[_index].facilityName;
 

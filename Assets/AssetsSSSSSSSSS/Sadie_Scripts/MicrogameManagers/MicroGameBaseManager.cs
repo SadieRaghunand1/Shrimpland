@@ -19,7 +19,8 @@ public class MicroGameBaseManager : MonoBehaviour
 
     public virtual void StartGame()
     {
-        mapImage.enabled = false;
+        //mapImage.enabled = false;
+        mapImage.color = new Color(255, 255, 255, 0);
         bought = true;
         mainCamera.enabled = false;
         mainAudioListener.enabled = false;
