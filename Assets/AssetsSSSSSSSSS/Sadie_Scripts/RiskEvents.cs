@@ -9,6 +9,7 @@ public class RiskEvents : MonoBehaviour
     //Manages liklihood of a legal event + what happens in how player responds to it
     private BankManager bankManager;
     [SerializeField] private LawsuitData[] lawsuits;
+    private LawsuitData currentLawsuit;
     [SerializeField] private float rollTimeMin;
     [SerializeField] private float rollTimeMax;
 
@@ -17,7 +18,8 @@ public class RiskEvents : MonoBehaviour
     [SerializeField] private TextMeshProUGUI desc;
     [SerializeField] private TextMeshProUGUI settlement;
     [SerializeField] private TextMeshProUGUI legalLoss;
-
+    [SerializeField] private TextMeshProUGUI outcome;
+ 
     private float numRolled;
 
     [SerializeField] private Transform lawInstancePos;
@@ -33,17 +35,57 @@ public class RiskEvents : MonoBehaviour
 
     void ConductLawsuit()
     {
+        outcome.text = " ";
         Debug.Log("Lawsuit called");
         int _index = Random.Range(0, lawsuits.Length - 1);
-        //Instantiate(lawsuits[_index], lawInstancePos);
 
-        title.text = lawsuits[_index].title;
-        desc.text = lawsuits[_index].desc;
-        settlement.text = "$" + lawsuits[_index].payout.ToString();
-        legalLoss.text = "$" + lawsuits[_index].fightFee.ToString();
+        currentLawsuit = lawsuits[_index];
+
+        title.text = currentLawsuit.title;
+        desc.text = currentLawsuit.desc;
+        settlement.text = "$" + currentLawsuit.payout.ToString();
+        legalLoss.text = "$" + currentLawsuit.fightFee.ToString();
 
         paperAnim.SetTrigger("StartLawsuit");
     }
+
+
+    public void SettleLawsuit()
+    {
+        bankManager.DecreaseBalance(currentLawsuit.payout);
+        bankManager.legalLosses -= currentLawsuit.payout;
+        bankManager.ChangeBankStatement();
+
+        outcome.color = Color.blue;
+        outcome.text = "Settled";
+        paperAnim.SetTrigger("StopLawsuit");
+    }
+
+    public void FightLawsuit()
+    {
+        float _chanceToWin = Random.Range(0, 100);
+        Debug.Log("Chnace to win calc to " + _chanceToWin);
+        if(_chanceToWin <= currentLawsuit.chanceToWin)
+        {
+            //Lose case
+            bankManager.DecreaseBalance(currentLawsuit.fightFee);
+            bankManager.legalLosses -= currentLawsuit.fightFee;
+            bankManager.ChangeBankStatement();
+            //Some visual indication that the case is lose
+            outcome.color = Color.red;
+            outcome.text = "Lost";
+        }
+        else
+        {
+            //Win
+            outcome.color = Color.green;
+            outcome.text = "Win";
+        }
+
+        paperAnim.SetTrigger("StopLawsuit");
+    }
+
+
 
 
     IEnumerator CalculateChanceOfLawsuit()
@@ -60,4 +102,7 @@ public class RiskEvents : MonoBehaviour
 
         StartCoroutine(CalculateChanceOfLawsuit());
     }
-}
+
+
+
+} //END RiskEvents.cs
