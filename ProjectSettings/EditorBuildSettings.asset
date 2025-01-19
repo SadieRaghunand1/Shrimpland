@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/AssetsSSSSSSSSS/Scenes/Char_Menu.unity
+    guid: 8c82ba393f2c81c4c874c10e5ffe596d
+  - enabled: 1
     path: Assets/AssetsSSSSSSSSS/Scenes/Sadie_Test.unity
     guid: 9f2055af77eccc9489f52f99f575f008
   - enabled: 1
