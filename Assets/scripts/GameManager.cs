@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas bankSheetCanvas;
     [SerializeField] private Canvas otherCanvas;
 
+    int countBank = 0;
+    [SerializeField] private DialogueManager dialogueManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,12 @@ public class GameManager : MonoBehaviour
         facilitySheetCanvas.enabled = false;
         bankSheetCanvas.enabled = true;
         otherCanvas.enabled = false;
+
+        if(countBank == 0)
+        {
+            dialogueManager.ReplaceText(dialogueManager.bankBalanceTutoial);
+            countBank++;
+        }
     }
 
     public void LoadMap()

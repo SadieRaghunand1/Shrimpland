@@ -17,6 +17,7 @@ public class MicroGameBaseManager : MonoBehaviour
 
     [SerializeField] private Image mapImage;
 
+    public int count;
     public virtual void StartGame()
     {
         //mapImage.enabled = false;
