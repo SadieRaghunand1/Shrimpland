@@ -93,6 +93,7 @@ public class BankManager : MonoBehaviour
         StartCoroutine(ChargeForFood());
 
         StartCoroutine(BreakFacilities());
+        StartCoroutine(BreakRides());
 
     }
 
@@ -463,7 +464,7 @@ public class BankManager : MonoBehaviour
 
     IEnumerator ChargeForFood()
     {
-        Debug.Log("n charge for food");
+        Debug.Log("In charge for food");
         yield return new WaitForSeconds(4);
 
         //Charge for food
