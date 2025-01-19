@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameManager : MonoBehaviour
+public class WhackManager : MonoBehaviour
 {
     public int spotsFixed;
     public int priceToFix;
