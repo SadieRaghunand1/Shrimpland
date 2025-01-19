@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class fallingPiece : MonoBehaviour
@@ -13,15 +12,29 @@ public class fallingPiece : MonoBehaviour
     public float rotateSpeed = 0;
     public Rigidbody2D rb;
 
+    public AppleBobbingManager rollerCoasterManager;
+
+
+    private void Start()
+    {
+        rollerCoasterManager = FindObjectOfType<AppleBobbingManager>();
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        lose += 1;
-        Destroy(gameObject);
-        Instantiate(losePic);
+        if(collision.gameObject.layer == 16)
+        {
+            rollerCoasterManager.countFallen++;
+            //lose += 1;
+            Destroy(gameObject);
+            //Instantiate(losePic);
+        }
+
+
     }
 
     private void OnMouseDown()
     {
+        Debug.Log("Wrench clicked");
         Destroy(gameObject);
     }
 
@@ -29,10 +42,10 @@ public class fallingPiece : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lose == 1)
+        /*if (lose == 1)
         {
             Instantiate(losePic);
-        }
+        }*/
 
         if (rotate == 0)
         {

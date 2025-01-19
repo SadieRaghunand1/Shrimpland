@@ -5,12 +5,15 @@ using TMPro;
 
 public class timer : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI timerText;
+    public TextMeshProUGUI timerText;
     private float time;
-    private float elapTime;
+    public float elapTime;
     public GameObject lose;
     public int time1 = 0;
     public int time2 = 0;
+
+
+    public AppleBobbingManager rollerCoasterManager;
 
     // Update is called once per frame
     void Update()
@@ -33,7 +36,8 @@ public class timer : MonoBehaviour
             if (elapTime >= 10.00)
             {
                 time1 += 1;
-                Instantiate(lose);
+                //Instantiate(lose);
+                rollerCoasterManager.ResetGame();
             }
         }
 
