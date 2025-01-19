@@ -452,7 +452,7 @@ MonoBehaviour:
       pool before it spreads contamination!
     prawndice: {fileID: 21300000, guid: 67d21ed792ba4f44b86fff364e0bc701, type: 3}
     lettersPerSecond: 10
-    spokenLine: {fileID: 8300000, guid: 9c70eed2744a3834fa1ab875d20bca49, type: 3}
+    spokenLine: {fileID: 8300000, guid: 5912da0de291e5b41abe74af2ea7151b, type: 3}
   rollerCosterTutorial:
   - dialogueTx: What's a rollercoaster without a few loose parts? Click on the falling
       parts to restore them to their rightful place.
@@ -4708,6 +4708,8 @@ MonoBehaviour:
   mainCamera: {fileID: 1694309396}
   mainAudioListener: {fileID: 1694309395}
   mapImage: {fileID: 326616596}
+  dialogueManager: {fileID: 30104915}
+  count: 0
   tongs: {fileID: 1371202788}
   ogTongPos: {fileID: 529300555}
 --- !u!212 &476006136 stripped
@@ -8768,7 +8770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090b38622092bce4cb5c5ddb49aab074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBroken: 1
+  isBroken: 0
   bought: 0
   gameParentObj: {fileID: 1029006068}
   gameManager: {fileID: 1311256311}
@@ -8779,6 +8781,8 @@ MonoBehaviour:
   mainCamera: {fileID: 1694309396}
   mainAudioListener: {fileID: 1694309395}
   mapImage: {fileID: 737193084}
+  dialogueManager: {fileID: 30104915}
+  count: 0
   spotsFixed: 0
   priceToFix: 0
   ListOfHoles:
@@ -13240,6 +13244,7 @@ GameObject:
   - component: {fileID: 1498416979}
   - component: {fileID: 1498416978}
   - component: {fileID: 1498416977}
+  - component: {fileID: 1498416980}
   m_Layer: 5
   m_Name: Carosel
   m_TagString: Untagged
@@ -13310,7 +13315,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1498416978}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1498416980}
+        m_TargetAssemblyTypeName: carosel, Assembly-CSharp
+        m_MethodName: SFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1498416978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13349,6 +13366,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498416975}
   m_CullTransparentMesh: 1
+--- !u!114 &1498416980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498416975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 920581a83b7b9cd4185f760764c17ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 30104915}
 --- !u!1 &1508221880
 GameObject:
   m_ObjectHideFlags: 0
@@ -17645,6 +17675,8 @@ MonoBehaviour:
   mainCamera: {fileID: 1694309396}
   mainAudioListener: {fileID: 1694309395}
   mapImage: {fileID: 557852579}
+  dialogueManager: {fileID: 30104915}
+  count: 0
   countFallen: 0
   screwPrefab: {fileID: 1275500723424953477, guid: 49b44b7581dc9d9409c03a314a4d25d5, type: 3}
   spawnPoints:
@@ -18448,6 +18480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bac8e87178f7140b44a93370b859e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 0}
   facilityManager: {fileID: 53307759}
   currentBalance: 500000
   risk: 20

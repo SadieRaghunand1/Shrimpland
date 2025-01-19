@@ -16,10 +16,11 @@ public class MicroGameBaseManager : MonoBehaviour
     [SerializeField] protected AudioListener mainAudioListener;
 
     [SerializeField] private Image mapImage;
-
+    [SerializeField] protected DialogueManager dialogueManager;
     public int count;
     public virtual void StartGame()
     {
+        
         //mapImage.enabled = false;
         mapImage.color = new Color(255, 255, 255, 0);
         bought = true;

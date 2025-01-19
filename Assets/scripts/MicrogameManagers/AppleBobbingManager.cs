@@ -18,8 +18,22 @@ public class AppleBobbingManager : MicroGameBaseManager
 
     public override void StartGame()
     {
-        base.StartGame();
-        SpawnScrews();
+
+        if(isBroken)
+        {
+            base.StartGame();
+            if (count == 0)
+            {
+                dialogueManager.ReplaceText(dialogueManager.rollerCosterTutorial);
+                count++;
+            }
+            SpawnScrews();
+        }
+        else
+        {
+            dialogueManager.ReplaceText(dialogueManager.attractionNotBroken);
+        }
+       
     }
 
     public override void ResetGame()

@@ -13,7 +13,7 @@ public class BankManager : MonoBehaviour
         BROKEN
     };
 
-    
+    public DialogueManager dialogueManager;
     private GameManager gameManager;
     [SerializeField] private FacilityManager facilityManager;
     public float currentBalance;
@@ -123,6 +123,7 @@ public class BankManager : MonoBehaviour
     {
         currentBalance -= _cost;
         totalBalanceTx.text = "$" + currentBalance.ToString(); //When in other scenes this kind of thing does not work, maybe just make map and stuff open over bank sheet, all one scene?
+        CheckBalance();
     }
 
     public void IncreaseBalance(float _gain)
@@ -130,6 +131,7 @@ public class BankManager : MonoBehaviour
 
         currentBalance += _gain;
         totalBalanceTx.text = "$" + currentBalance.ToString();
+        CheckBalance();
     }
 
 
@@ -138,12 +140,12 @@ public class BankManager : MonoBehaviour
         if (currentBalance >= goal)
         {
             //Win
-            Debug.Log("Win");
+            dialogueManager.ReplaceText(dialogueManager.win);
         }
         else if(currentBalance <= 0)
         {
             //Lose
-            Debug.Log("Lose");
+            dialogueManager.ReplaceText(dialogueManager.lose);
         }
     }
 
