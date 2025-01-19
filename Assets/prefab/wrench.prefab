@@ -13,20 +13,24 @@ PrefabInstance:
       value: wrench
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f5f6da4f406fb8e4e8ea8bb8c5cbda97, type: 3}
+    - target: {fileID: 3626916397498700004, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 12
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: fb80a403285f58f41b85e520bf4b227f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -98,6 +102,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   losePic: {fileID: 39239169042111987, guid: 119fc7d027039994d8dfae6af6ecc3a0, type: 3}
   lose: 0
+  rotate: 0
+  speed: 0
+  speed2: 0
+  rotateSpeed: 0
+  rb: {fileID: 0}
 --- !u!61 &6476868493107107411
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,8 +142,8 @@ BoxCollider2D:
   m_Offset: {x: -0.035000026, y: 1.055}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.52671754, y: -1.7446809}
-    oldSize: {x: 1.31, y: 0.47}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10.8, y: 19.2}
     newSize: {x: 1.31, y: 0.47}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
