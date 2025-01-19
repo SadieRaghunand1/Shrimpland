@@ -35,6 +35,7 @@ public class MicroGameBaseManager : MonoBehaviour
 
     public virtual void ResetGame()
     {
+        Debug.Log("Reset called");
         //Base should be at end of ovrride methods
         isBroken = false;
         mainCamera.enabled = true;

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class tongs2 : MonoBehaviour
 {
+
+    [SerializeField] private RealAppleBobbingManager appleBobbingManager;
+
     //sets player movespeed
     public float moveSpeed = 5f;
 
@@ -36,5 +39,15 @@ public class tongs2 : MonoBehaviour
 
         //rotates character
         rb.rotation = angle;
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 15)
+        {
+            Debug.Log("COllided w shrimp");
+            appleBobbingManager.ResetGame();
+        }
     }
 }
