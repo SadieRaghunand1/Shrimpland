@@ -13,7 +13,7 @@ public class BankManager : MonoBehaviour
         BROKEN
     };
 
-    //Tis is a new comment
+    
     private GameManager gameManager;
     [SerializeField] private FacilityManager facilityManager;
     public float currentBalance;
@@ -22,12 +22,15 @@ public class BankManager : MonoBehaviour
 
     public float increaseRateUtilities;
 
+    public int numItemsBought;
+
     [Header("People")]
     public float attendees;
     public float ticketPrice;
     public float employees;
     public float salary;
     public float increaseRatePeople;
+    public float subtractRatePeople;
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI totalBalanceTx;
@@ -69,6 +72,8 @@ public class BankManager : MonoBehaviour
     public Animator salaryAnim;
     public Animator legalAnim;
 
+    [Header("Microgames")]
+    [SerializeField] private MicroGameBaseManager[] microgames;
 
     private void Start()
     {
@@ -87,6 +92,27 @@ public class BankManager : MonoBehaviour
     }
 
     #region Increase/Decrease variables
+   
+    void CountNumBought()
+    {
+        numItemsBought = 0;
+        for(int i = 0; i < microgames.Length; i++)
+        {
+            if(microgames[i].bought)
+            {
+                numItemsBought++;
+            }
+        }
+
+        for(int i = 0; i < facilityManager.bought.Length; i++)
+        {
+            if(facilityManager.bought[i] == true)
+            {
+                numItemsBought++;
+            }
+        }
+    }
+    
     public void DecreaseBalance(float _cost)
     {
         currentBalance -= _cost;
@@ -233,100 +259,116 @@ public class BankManager : MonoBehaviour
         //Use facility enum + risk to determine how often this breaks
 
         //Plumbing:
-        if (plumbing == FacilitiesStatus.UPGRADED)
+        if(facilityManager.bought[0] == true)
         {
-            _plumbingChance = Random.Range(0, 200);
-        }
-        else
-        {
-            _plumbingChance = Random.Range(0, 100);
-
-        }
-       
-        if(_plumbingChance <= risk)
-        {
-            int _num = Random.Range(1, 2);
-
-            for(int i = 0; i <= _num; i++)
+            if (plumbing == FacilitiesStatus.UPGRADED)
             {
-                int _index = Random.Range(0, 6);
-                facilityManager.facilityDatas[0].statuses[_index] = false;
-                IncreaseRisk(1);
+                _plumbingChance = Random.Range(0, 200);
             }
+            else
+            {
+                _plumbingChance = Random.Range(0, 100);
+
+            }
+
+            if (_plumbingChance <= risk)
+            {
+                int _num = Random.Range(1, 2);
+
+                for (int i = 0; i <= _num; i++)
+                {
+                    int _index = Random.Range(0, 6);
+                    facilityManager.facilityDatas[0].statuses[_index] = false;
+                    IncreaseRisk(1);
+                }
+            }
+
         }
 
 
 
         //Food
-        if (food == FacilitiesStatus.UPGRADED)
+        if(facilityManager.bought[1] == true)
         {
-            _foodChance = Random.Range(0, 200);
-        }
-        else
-        {
-            _foodChance = Random.Range(0, 100);
-
-        }
-
-        if (_foodChance <= risk)
-        {
-            int _num2 = Random.Range(1, 2);
-
-            for (int i = 0; i <= _num2; i++)
+            if (food == FacilitiesStatus.UPGRADED)
             {
-                int _index2 = Random.Range(0, 6);
-                facilityManager.facilityDatas[1].statuses[_index2] = false;
-                IncreaseRisk(1);
+                _foodChance = Random.Range(0, 200);
             }
+            else
+            {
+                _foodChance = Random.Range(0, 100);
+
+            }
+
+            if (_foodChance <= risk)
+            {
+                int _num2 = Random.Range(1, 2);
+
+                for (int i = 0; i <= _num2; i++)
+                {
+                    int _index2 = Random.Range(0, 6);
+                    facilityManager.facilityDatas[1].statuses[_index2] = false;
+                    IncreaseRisk(1);
+                }
+            }
+
         }
 
 
         //Electrical
-        if (electrical == FacilitiesStatus.UPGRADED)
+        if(facilityManager.bought[2] == true)
         {
-            _electricalChance = Random.Range(0, 200);
-        }
-        else
-        {
-            _electricalChance = Random.Range(0, 100);
-
-        }
-
-        if (_electricalChance <= risk)
-        {
-            int _num3 = Random.Range(1, 2);
-
-            for (int i = 0; i <= _num3; i++)
+            if (electrical == FacilitiesStatus.UPGRADED)
             {
-                int _index3 = Random.Range(0, 6);
-                facilityManager.facilityDatas[2].statuses[_index3] = false;
-                IncreaseRisk(1);
+                _electricalChance = Random.Range(0, 200);
+            }
+            else
+            {
+                _electricalChance = Random.Range(0, 100);
+
+            }
+
+            if (_electricalChance <= risk)
+            {
+                int _num3 = Random.Range(1, 2);
+
+                for (int i = 0; i <= _num3; i++)
+                {
+                    int _index3 = Random.Range(0, 6);
+                    facilityManager.facilityDatas[2].statuses[_index3] = false;
+                    IncreaseRisk(1);
+                }
             }
         }
+        
 
 
         //Janitorial
-        if (janitorial == FacilitiesStatus.UPGRADED)
+        if(facilityManager.bought[3] == true)
         {
-            _janitorialChance = Random.Range(0, 200);
-        }
-        else
-        {
-            _janitorialChance = Random.Range(0, 100);
-
-        }
-
-        if (_janitorialChance <= risk)
-        {
-            int _num4 = Random.Range(1, 2);
-
-            for (int i = 0; i <= _num4; i++)
+            if (janitorial == FacilitiesStatus.UPGRADED)
             {
-                int _index4 = Random.Range(0, 6);
-                facilityManager.facilityDatas[3].statuses[_index4] = false;
-                IncreaseRisk(1);
+                _janitorialChance = Random.Range(0, 200);
+            }
+            else
+            {
+                _janitorialChance = Random.Range(0, 100);
+
+            }
+
+            if (_janitorialChance <= risk)
+            {
+                int _num4 = Random.Range(1, 2);
+
+                for (int i = 0; i <= _num4; i++)
+                {
+                    int _index4 = Random.Range(0, 6);
+                    facilityManager.facilityDatas[3].statuses[_index4] = false;
+                    IncreaseRisk(1);
+                }
             }
         }
+        
 
         StartCoroutine(BreakFacilities());
 
@@ -357,15 +399,27 @@ public class BankManager : MonoBehaviour
 
     IEnumerator IncreaseEmployeesAndAttendees()
     {
-        yield return new WaitForSeconds(increaseRatePeople); //Increase rate can change based on how good the park is os there is more attendees, or ca be flat
-        if(attendees % 20 == 0)
+        CountNumBought();
+        if(numItemsBought != 0)
         {
-            ChangeEmployeesAndAttendees(1, 5);
-            StartCoroutine(WaitToChargeTickets());
+            increaseRatePeople = subtractRatePeople - (attendees + numItemsBought);
         }
-        else
+        
+
+        yield return new WaitForSeconds(increaseRatePeople); //Increase rate can change based on how good the park is os there is more attendees, or ca be flat
+        
+        if(numItemsBought != 0)
         {
-            ChangeEmployeesAndAttendees(0, 5);
+            if (attendees % 20 == 0)
+            {
+                ChangeEmployeesAndAttendees(1, 5);
+                StartCoroutine(WaitToChargeTickets());
+            }
+            else
+            {
+                ChangeEmployeesAndAttendees(0, 5);
+            }
+
         }
 
         StartCoroutine(IncreaseEmployeesAndAttendees());

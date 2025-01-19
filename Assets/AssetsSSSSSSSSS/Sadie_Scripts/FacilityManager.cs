@@ -12,12 +12,16 @@ public class FacilityManager : MonoBehaviour
         public string facilityName;
         public string[] breakableThings;
         public bool[] statuses;
+
     }
 
     public FacilityData[] facilityDatas;
     public int facilityIndex;
-    private BankManager bankManager;
+        private BankManager bankManager;
     private GameManager gameManager;
+
+    public bool[] bought; //plumbing, food, electrical, janitorial
+
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI title;
@@ -34,11 +38,13 @@ public class FacilityManager : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
         loadBank.onClick.AddListener(() => { gameManager.LoadBankSheet(); });
         //Test
-        FillInInfo(facilityIndex);
+       // FillInInfo(facilityIndex);
     }
 
     public void FillInInfo(int _index)
     {
+        bought[_index] = true;
+
         //_index correponds to the index of each facility in above array
         title.text = facilityDatas[_index].facilityName;
 

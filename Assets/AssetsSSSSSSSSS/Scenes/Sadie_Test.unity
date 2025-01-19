@@ -593,6 +593,7 @@ MonoBehaviour:
     - Oder
     statuses: 01010101010101
   facilityIndex: 2
+  bought: 00000000
   title: {fileID: 123413149}
   things:
   - {fileID: 884587660}
@@ -12548,6 +12549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBroken: 1
+  bought: 0
   gameParentObj: {fileID: 460326816}
   gameManager: {fileID: 1311256311}
   bankManager: {fileID: 1987841623}
@@ -13358,11 +13360,13 @@ MonoBehaviour:
   currentBalance: 500000
   risk: 70
   increaseRateUtilities: 10
+  numItemsBought: 0
   attendees: 0
   ticketPrice: 50
   employees: 0
   salary: 15
-  increaseRatePeople: 20
+  increaseRatePeople: 0
+  subtractRatePeople: 15
   totalBalanceTx: {fileID: 703287465}
   riskTx: {fileID: 1656606016}
   storeCanvas: {fileID: 2028853665}
@@ -13392,6 +13396,8 @@ MonoBehaviour:
   maintenanceAnim: {fileID: 1637082205}
   salaryAnim: {fileID: 977513210}
   legalAnim: {fileID: 1837324999}
+  microgames:
+  - {fileID: 1878988340}
 --- !u!4 &1987841624
 Transform:
   m_ObjectHideFlags: 0

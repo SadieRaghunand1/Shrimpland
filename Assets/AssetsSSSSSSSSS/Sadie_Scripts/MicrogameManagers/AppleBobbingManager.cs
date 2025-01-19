@@ -42,7 +42,7 @@ public class AppleBobbingManager : MicroGameBaseManager
     {
         int _index = Random.Range(0, spawnPoints.Length);
 
-        if(isBroken)
+        if(isBroken && bought)
         {
             Instantiate(screwPrefab, spawnPoints[_index]);
         }

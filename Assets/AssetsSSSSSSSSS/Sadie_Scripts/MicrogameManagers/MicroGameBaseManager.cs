@@ -7,6 +7,7 @@ using TMPro;
 public class MicroGameBaseManager : MonoBehaviour
 {
     public bool isBroken;
+    public bool bought;
     public GameObject gameParentObj;
     [SerializeField] protected GameManager gameManager;
     [SerializeField] protected BankManager bankManager;
@@ -14,8 +15,11 @@ public class MicroGameBaseManager : MonoBehaviour
     [SerializeField] protected Camera mainCamera;
     [SerializeField] protected AudioListener mainAudioListener;
 
+    
+
     public virtual void StartGame()
     {
+        bought = true;
         mainCamera.enabled = false;
         mainAudioListener.enabled = false;
 
