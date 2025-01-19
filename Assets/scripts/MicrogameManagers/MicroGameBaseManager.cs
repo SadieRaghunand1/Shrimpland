@@ -18,9 +18,11 @@ public class MicroGameBaseManager : MonoBehaviour
     [SerializeField] private Image mapImage;
     [SerializeField] protected DialogueManager dialogueManager;
     public int count;
+
+    public ClickSound audioUI;
     public virtual void StartGame()
     {
-        
+        audioUI.audioSource.Play();
         //mapImage.enabled = false;
         mapImage.color = new Color(255, 255, 255, 0);
         bought = true;
@@ -37,6 +39,8 @@ public class MicroGameBaseManager : MonoBehaviour
 
     public virtual void ResetGame()
     {
+
+        audioUI.audioSource.Play();
         Debug.Log("Reset called");
         //Base should be at end of ovrride methods
         isBroken = false;

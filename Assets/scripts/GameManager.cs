@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     int countBank = 0;
     [SerializeField] private DialogueManager dialogueManager;
 
+    public ClickSound audioUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadBankSheet()
     {
+        audioUI.audioSource.Play();
         //SceneManager.LoadScene(0);
         mapCanvas.enabled = false;
         facilitySheetCanvas.enabled = false;
@@ -40,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadMap()
     {
+        audioUI.audioSource.Play();
         //SceneManager.LoadScene(1);
         mapCanvas.enabled = true;
         facilitySheetCanvas.enabled = false;

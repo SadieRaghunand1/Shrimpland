@@ -26,6 +26,7 @@ public class RiskEvents : MonoBehaviour
 
     [SerializeField] private Animator paperAnim;
 
+    [SerializeField] private ClickSound audioL;
     private void Start()
     {
         bankManager = FindAnyObjectByType<BankManager>();
@@ -35,6 +36,7 @@ public class RiskEvents : MonoBehaviour
 
     void ConductLawsuit()
     {
+        audioL.PlayClick();
         outcome.text = " ";
         Debug.Log("Lawsuit called");
         int _index = Random.Range(0, lawsuits.Length - 1);
