@@ -21,8 +21,13 @@ public class BankManager : MonoBehaviour
     private float goal = 100000000f; //1 krillion, when currentBalance hits this, win; if hist 0, lose
 
     public float increaseRateUtilities;
+    public float increaseRateRides;
 
     public int numItemsBought;
+
+    [Header("Costs Facilities/Rides")]
+    public float costOfFood;
+    public float costOfRide;
 
     [Header("People")]
     public float attendees;
@@ -85,7 +90,7 @@ public class BankManager : MonoBehaviour
         StartCoroutine(WaitToPayEmployees());
         //StartCoroutine(WaitToChargeTickets());
         StartCoroutine(IncreaseEmployeesAndAttendees());
-
+        StartCoroutine(ChargeForFood());
 
         StartCoroutine(BreakFacilities());
 
@@ -245,7 +250,7 @@ public class BankManager : MonoBehaviour
     #endregion
 
 
-    #region Facilities
+    #region Breaking Things
 
     public void ChangeFacilityStatus()
     {
@@ -374,6 +379,23 @@ public class BankManager : MonoBehaviour
 
     }
 
+    public void ChangeRideBreakage()
+    {
+        for(int i = 0; i < microgames.Length; i++)
+        {
+            if(microgames[i].bought && !microgames[i].isBroken)
+            {
+                int _chance = Random.Range(0, 100);
+                if(_chance <= risk)
+                {
+                    microgames[i].isBroken = true;
+                    IncreaseRisk(1);
+                }
+            }
+        }
+
+        StartCoroutine(BreakRides());
+    }
 
     #endregion
 
@@ -430,6 +452,51 @@ public class BankManager : MonoBehaviour
     {
         yield return new WaitForSeconds(increaseRateUtilities);
         ChangeFacilityStatus();
+    }
+
+    IEnumerator BreakRides()
+    {
+        yield return new WaitForSeconds(increaseRateRides);
+        ChangeRideBreakage();
+    }
+
+
+    IEnumerator ChargeForFood()
+    {
+        Debug.Log("n charge for food");
+        yield return new WaitForSeconds(4);
+
+        //Charge for food
+        if(facilityManager.bought[1])
+        {
+            for (int i = 0; i < facilityManager.facilityDatas[1].statuses.Length; i++)
+            {
+                if (facilityManager.facilityDatas[1].statuses[i] == false)
+                {
+                    break;
+                }
+                else
+                {
+                    if(i == facilityManager.facilityDatas[1].statuses.Length - 1)
+                    {
+                        float _temp = facilitiesGains;
+                        Debug.Log("Successfully charged for food");
+                        IncreaseBalance(costOfFood * (attendees / 2));
+                        facilitiesGains += costOfFood * (attendees / 2);
+                        if (facilitiesGains!= _temp)
+                        {
+                            facilityAnim.SetTrigger("GetMoney");
+                        }
+                        
+                        
+                    }
+                    continue;
+                }
+            }
+        }
+
+        StartCoroutine(ChargeForFood());     
+        
     }
 
     #endregion

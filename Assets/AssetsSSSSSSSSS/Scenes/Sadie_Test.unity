@@ -13360,7 +13360,10 @@ MonoBehaviour:
   currentBalance: 500000
   risk: 70
   increaseRateUtilities: 10
+  increaseRateRides: 0
   numItemsBought: 0
+  costOfFood: 30
+  costOfRide: 15
   attendees: 0
   ticketPrice: 50
   employees: 0
