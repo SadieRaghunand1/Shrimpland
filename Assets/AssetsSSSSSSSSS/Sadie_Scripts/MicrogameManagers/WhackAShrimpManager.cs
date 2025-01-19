@@ -49,7 +49,7 @@ public class WhackAShrimpManager : MicroGameBaseManager
         if (spotsFixed == numberOfBrokenSpots)
         {
             Debug.Log("You have fixed the ride");
-            priceToFix = numberOfBrokenSpots * 10;
+            priceToFix = numberOfBrokenSpots * 10000;
             buttonText.text = "Repair - $" + priceToFix + ",000";
             Button.SetActive(true);
         }
@@ -58,6 +58,14 @@ public class WhackAShrimpManager : MicroGameBaseManager
 
     public override void ResetGame()
     {
+        float _temp = bankManager.maintenanceLosses;
+        bankManager.DecreaseBalance(priceToFix);
+        bankManager.maintenanceLosses -= priceToFix;
+        if(bankManager.maintenanceLosses != _temp)
+        {
+            bankManager.maintenanceAnim.SetTrigger("LoseMoney");
+        }
+
         Button.SetActive(false);
         Color _tempColor = new Color(shrimpRenderers[0].color.r, shrimpRenderers[0].color.b, shrimpRenderers[0].color.g, 0);
         for (int i = 0; i < shrimpRenderers.Length; i++)
@@ -67,5 +75,18 @@ public class WhackAShrimpManager : MicroGameBaseManager
         }
 
         base.ResetGame();
+    }
+
+    public void QuitGame()
+    {
+        mainCamera.enabled = true;
+        mainAudioListener.enabled = true;
+
+        for (int i = 0; i < allUIsNotMicrogame.Length; i++)
+        {
+            allUIsNotMicrogame[i].enabled = true;
+        }
+
+        gameParentObj.SetActive(false);
     }
 }
