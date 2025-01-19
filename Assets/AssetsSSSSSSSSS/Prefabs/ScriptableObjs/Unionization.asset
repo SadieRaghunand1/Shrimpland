@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Unionization
   m_EditorClassIdentifier: 
   title: 'Shrimp Union: Mistreatment at work'
-  desc: Discrimination in employing 70% jumbo shrimp and 30% other types of shrimp,
-    low pay
+  desc: 'ATTENTION: Those jumbo shrimp at the union have threatened a strike, they
+    demand competitive wages, more benefits, and safer conditions.'
   payout: 350
   fightFee: 900
   chanceToWin: 60

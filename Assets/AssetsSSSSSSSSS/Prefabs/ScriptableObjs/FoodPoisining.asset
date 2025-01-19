@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FoodPoisining
   m_EditorClassIdentifier: 
   title: Foodborne Illness
-  desc: Party 1 contracted acute food poisoning after consuming food from party 2's
-    (henceforth known as "ShrimpWorld") establishment
+  desc: 'ATTENTION : Outbreak of food borne illness due to the lack of adherence
+    to regulated standards of food preparation'
   payout: 500
   fightFee: 1000
   chanceToWin: 40

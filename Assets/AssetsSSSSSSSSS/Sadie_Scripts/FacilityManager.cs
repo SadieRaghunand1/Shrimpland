@@ -21,7 +21,7 @@ public class FacilityManager : MonoBehaviour
     private GameManager gameManager;
 
     public bool[] bought; //plumbing, food, electrical, janitorial
-
+    public Image[] mapImages;
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI title;
@@ -44,7 +44,7 @@ public class FacilityManager : MonoBehaviour
     public void FillInInfo(int _index)
     {
         bought[_index] = true;
-
+        mapImages[_index].enabled = false;
         //_index correponds to the index of each facility in above array
         title.text = facilityDatas[_index].facilityName;
 

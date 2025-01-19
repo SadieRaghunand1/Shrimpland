@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0a8d648b6b0e84fbae4234afe3df1f, type: 3}
   m_Name: NegligentSupervision
   m_EditorClassIdentifier: 
-  title: Negligent supervision of park attendees
-  desc: Several instances of lost children and on property crime
+  title: Negligent supervision
+  desc: 'ATTENTION: The parks construction lead worker failed to enforce safety practices.
+    Several workers have been hospitalized'
   payout: 550
   fightFee: 1100
   chanceToWin: 50

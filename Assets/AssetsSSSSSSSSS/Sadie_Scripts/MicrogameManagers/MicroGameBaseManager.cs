@@ -15,10 +15,11 @@ public class MicroGameBaseManager : MonoBehaviour
     [SerializeField] protected Camera mainCamera;
     [SerializeField] protected AudioListener mainAudioListener;
 
-    
+    [SerializeField] private Image mapImage;
 
     public virtual void StartGame()
     {
+        mapImage.enabled = false;
         bought = true;
         mainCamera.enabled = false;
         mainAudioListener.enabled = false;

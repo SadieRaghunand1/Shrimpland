@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0a8d648b6b0e84fbae4234afe3df1f, type: 3}
   m_Name: Injury
   m_EditorClassIdentifier: 
-  title: Injury on a ride
-  desc: uhhhhh fix later
+  title: Injury
+  desc: 'ATTENTION: Due to a lax is proper safety practices, the park is being held
+    liable for a parkgoers injury.'
   payout: 700
   fightFee: 1300
   chanceToWin: 20
