@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class menu : MonoBehaviour
 {
+    
     public void playButton()
     {
-        SceneManager.LoadScene(1);
+       SceneManager.LoadScene(1);
+       
     
     }
     public void stopButton() 
@@ -15,5 +17,6 @@ public class menu : MonoBehaviour
         Application.Quit();
 
     }
+
 }
 
