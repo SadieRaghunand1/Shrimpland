@@ -10,7 +10,7 @@ public class timer : MonoBehaviour
     private float elapTime;
     public GameObject lose;
     public int time1 = 0;
-    public int time2 = 0;
+
 
     // Update is called once per frame
     void Update()
