@@ -2311,7 +2311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -4956,7 +4956,7 @@ MonoBehaviour:
   mapImage: {fileID: 326616596}
   dialogueManager: {fileID: 30104915}
   count: 0
-  audioUI: {fileID: 0}
+  audioUI: {fileID: 993570241}
   tongs: {fileID: 1371202788}
   ogTongPos: {fileID: 529300555}
 --- !u!212 &476006136 stripped
@@ -9101,7 +9101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090b38622092bce4cb5c5ddb49aab074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBroken: 0
+  isBroken: 1
   bought: 0
   gameParentObj: {fileID: 1029006068}
   gameManager: {fileID: 1311256311}
@@ -9114,7 +9114,7 @@ MonoBehaviour:
   mapImage: {fileID: 737193084}
   dialogueManager: {fileID: 30104915}
   count: 0
-  audioUI: {fileID: 0}
+  audioUI: {fileID: 993570241}
   spotsFixed: 0
   priceToFix: 0
   ListOfHoles:
@@ -9915,7 +9915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 993570242}
   mapAmb: {fileID: 2039853741}
-  bankAmb: {fileID: 0}
+  bankAmb: {fileID: 1786882758}
   map: {fileID: 2039853739}
   bank: {fileID: 1786882755}
   bobbingManager: {fileID: 469666485}
@@ -11648,7 +11648,7 @@ MonoBehaviour:
   outcome: {fileID: 1926116959}
   lawInstancePos: {fileID: 1164045427}
   paperAnim: {fileID: 1120475980}
-  audioL: {fileID: 0}
+  audioL: {fileID: 1801759816}
 --- !u!4 &1164045427
 Transform:
   m_ObjectHideFlags: 0
@@ -18485,7 +18485,7 @@ MonoBehaviour:
   mapImage: {fileID: 557852579}
   dialogueManager: {fileID: 30104915}
   count: 0
-  audioUI: {fileID: 0}
+  audioUI: {fileID: 993570241}
   countFallen: 0
   screwPrefab: {fileID: 1275500723424953477, guid: 49b44b7581dc9d9409c03a314a4d25d5, type: 3}
   spawnPoints:
@@ -19289,7 +19289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49bac8e87178f7140b44a93370b859e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueManager: {fileID: 0}
+  dialogueManager: {fileID: 30104915}
   facilityManager: {fileID: 53307759}
   currentBalance: 500000
   risk: 20

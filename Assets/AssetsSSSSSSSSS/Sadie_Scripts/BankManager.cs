@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+using UnityEngine.SceneManagement;
+
 public class BankManager : MonoBehaviour
 {
     public enum FacilitiesStatus
@@ -18,7 +20,7 @@ public class BankManager : MonoBehaviour
     [SerializeField] private FacilityManager facilityManager;
     public float currentBalance;
     public float risk; //Max at 100, min 0
-    private float goal = 100000000f; //1 krillion, when currentBalance hits this, win; if hist 0, lose
+    private float goal = 1000000f; //1 krillion, when currentBalance hits this, win; if hist 0, lose
 
     public float increaseRateUtilities;
     public float increaseRateRides;
@@ -140,12 +142,15 @@ public class BankManager : MonoBehaviour
         if (currentBalance >= goal)
         {
             //Win
+            Debug.Log("Win");
             dialogueManager.ReplaceText(dialogueManager.win);
+            StartCoroutine(LoadMenu());
         }
         else if(currentBalance <= 0)
         {
             //Lose
             dialogueManager.ReplaceText(dialogueManager.lose);
+            StartCoroutine(LoadMenu());
         }
     }
 
@@ -159,7 +164,7 @@ public class BankManager : MonoBehaviour
  
     public void IncreaseRisk(float _increase)
     {
-        if(risk < 100)
+        if(risk < 1000)
         risk += _increase;
         riskTx.text = risk.ToString() + "%";
     }
@@ -500,6 +505,13 @@ public class BankManager : MonoBehaviour
 
         StartCoroutine(ChargeForFood());     
         
+    }
+
+
+    IEnumerator LoadMenu()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(0);
     }
 
     #endregion
