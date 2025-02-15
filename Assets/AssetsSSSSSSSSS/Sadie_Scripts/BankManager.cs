@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+using UnityEngine.SceneManagement;
+
 public class BankManager : MonoBehaviour
 {
     public enum FacilitiesStatus
@@ -13,12 +15,12 @@ public class BankManager : MonoBehaviour
         BROKEN
     };
 
-    #region Variables
+    public DialogueManager dialogueManager;
     private GameManager gameManager;
     [SerializeField] private FacilityManager facilityManager;
     public float currentBalance;
     public float risk; //Max at 100, min 0
-    private float goal = 100000000f; //1 krillion, when currentBalance hits this, win; if hist 0, lose
+    private float goal = 1000000f; //1 krillion, when currentBalance hits this, win; if hist 0, lose
 
     public float increaseRateUtilities;
     public float increaseRateRides;
@@ -79,7 +81,7 @@ public class BankManager : MonoBehaviour
 
     [Header("Microgames")]
     [SerializeField] private MicroGameBaseManager[] microgames;
-    #endregion
+
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -122,7 +124,8 @@ public class BankManager : MonoBehaviour
     public void DecreaseBalance(float _cost)
     {
         currentBalance -= _cost;
-        totalBalanceTx.text = "$" + currentBalance.ToString(); 
+        totalBalanceTx.text = "$" + currentBalance.ToString(); //When in other scenes this kind of thing does not work, maybe just make map and stuff open over bank sheet, all one scene?
+        CheckBalance();
     }
 
     public void IncreaseBalance(float _gain)
@@ -130,6 +133,7 @@ public class BankManager : MonoBehaviour
 
         currentBalance += _gain;
         totalBalanceTx.text = "$" + currentBalance.ToString();
+        CheckBalance();
     }
 
 
@@ -139,43 +143,30 @@ public class BankManager : MonoBehaviour
         {
             //Win
             Debug.Log("Win");
+            dialogueManager.ReplaceText(dialogueManager.win);
+            StartCoroutine(LoadMenu());
         }
         else if(currentBalance <= 0)
         {
             //Lose
-            Debug.Log("Lose");
+            dialogueManager.ReplaceText(dialogueManager.lose);
+            StartCoroutine(LoadMenu());
         }
     }
 
     public void DecreaseRisk(float _amount)
     {
-        if(risk > 0 && ((risk -= _amount) < 0))
-        {
-            risk -= _amount;
-            riskTx.text = risk.ToString() + "%";
-        }
-        else if(((risk -= _amount) > 0))
-        {
-            risk = 0;
-            riskTx.text = risk.ToString() + "%";
-        }
-        
+        if(risk > 0)
+        risk -= _amount;
+        riskTx.text = risk.ToString() + "%";
     }
 
  
     public void IncreaseRisk(float _increase)
     {
-        if(risk < 100 && ((risk += _increase) < 100))
-        {
-            risk += _increase;
-            riskTx.text = risk.ToString() + "%";
-        }
-        else if (((risk -= _increase) > 100))
-        {
-            risk = 100;
-            riskTx.text = risk.ToString() + "%";
-        }
-
+        if(risk < 1000)
+        risk += _increase;
+        riskTx.text = risk.ToString() + "%";
     }
 
     //BigFuntionBigDeal
@@ -442,11 +433,6 @@ public class BankManager : MonoBehaviour
         if(numItemsBought != 0)
         {
             increaseRatePeople = subtractRatePeople - (attendees + numItemsBought);
-
-            if(increaseRatePeople < 3)
-            {
-                increaseRatePeople = 3;
-            }
         }
         
 
@@ -519,6 +505,13 @@ public class BankManager : MonoBehaviour
 
         StartCoroutine(ChargeForFood());     
         
+    }
+
+
+    IEnumerator LoadMenu()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(0);
     }
 
     #endregion

@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas bankSheetCanvas;
     [SerializeField] private Canvas otherCanvas;
 
+    int countBank = 0;
+    [SerializeField] private DialogueManager dialogueManager;
+
+    public ClickSound audioUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,15 +27,23 @@ public class GameManager : MonoBehaviour
 
     public void LoadBankSheet()
     {
+        audioUI.audioSource.Play();
         //SceneManager.LoadScene(0);
         mapCanvas.enabled = false;
         facilitySheetCanvas.enabled = false;
         bankSheetCanvas.enabled = true;
         otherCanvas.enabled = false;
+
+        if(countBank == 0)
+        {
+            dialogueManager.ReplaceText(dialogueManager.bankBalanceTutoial);
+            countBank++;
+        }
     }
 
     public void LoadMap()
     {
+        audioUI.audioSource.Play();
         //SceneManager.LoadScene(1);
         mapCanvas.enabled = true;
         facilitySheetCanvas.enabled = false;

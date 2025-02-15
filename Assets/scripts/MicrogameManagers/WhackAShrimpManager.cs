@@ -20,28 +20,43 @@ public class WhackAShrimpManager : MicroGameBaseManager
 
     public override void StartGame()
     {
-        base.StartGame();
-        if (isBroken == true)
+
+        if(isBroken)
         {
-            Button.SetActive(false);
-            numberOfBrokenSpots = Random.Range(1, 4);
-            spotsFixed = 0;
+            base.StartGame();
 
-            for (int i = 0; i < numberOfBrokenSpots; i++)
+            if (count == 00)
             {
-                int x = Random.Range(0, 8);
-                //This nested if statement is a cheeky fix for if the game rolls the same well twice,
-                //it will make the for loop run an extra time
-                if (ListOfHoles[x].GetComponent<WhackAShrimp>().isWellBroken == true)
-                {
-                    i--;
-                }
-                ListOfHoles[x].GetComponent<WhackAShrimp>().isWellBroken = true;
-                ListOfHoles[x].GetComponent<WhackAShrimp>().amIFixed = false;
-                Debug.Log("Hole #" + x + " is broken");
+                dialogueManager.ReplaceText(dialogueManager.wackTutorial);
+                count++;
             }
+            if (isBroken == true)
+            {
+                Button.SetActive(false);
+                numberOfBrokenSpots = Random.Range(1, 4);
+                spotsFixed = 0;
 
+                for (int i = 0; i < numberOfBrokenSpots; i++)
+                {
+                    int x = Random.Range(0, 8);
+                    //This nested if statement is a cheeky fix for if the game rolls the same well twice,
+                    //it will make the for loop run an extra time
+                    if (ListOfHoles[x].GetComponent<WhackAShrimp>().isWellBroken == true)
+                    {
+                        i--;
+                    }
+                    ListOfHoles[x].GetComponent<WhackAShrimp>().isWellBroken = true;
+                    ListOfHoles[x].GetComponent<WhackAShrimp>().amIFixed = false;
+                    Debug.Log("Hole #" + x + " is broken");
+                }
+
+            }
         }
+        else
+        {
+            dialogueManager.ReplaceText(dialogueManager.attractionNotBroken);
+        }
+        
     }
 
     public void WinCondition()

@@ -9,16 +9,32 @@ public class RealAppleBobbingManager : MicroGameBaseManager
 
     public override void StartGame()
     {
-        base.StartGame();
-
         if(isBroken)
         {
-            tongs.moveSpeed = 5f;
+            base.StartGame();
+
+            if (count == 0)
+            {
+                dialogueManager.ReplaceText(dialogueManager.shrimpBobbingTutorial);
+                count++;
+            }
+
+            if (isBroken)
+            {
+                tongs.moveSpeed = 5f;
+            }
+            else
+            {
+                tongs.moveSpeed = 0f;
+            }
         }
+
         else
         {
-            tongs.moveSpeed = 0f;
+            dialogueManager.ReplaceText(dialogueManager.attractionNotBroken);
         }
+
+        
     }
 
     public override void ResetGame()
