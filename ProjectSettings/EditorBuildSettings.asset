@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/AssetsSSSSSSSSS/Scenes/Sadie_Test.unity
     guid: 9f2055af77eccc9489f52f99f575f008
-  - enabled: 1
+  - enabled: 0
     path: Assets/AssetsSSSSSSSSS/Scenes/Sadie_Test_Map.unity
     guid: 975d3c330421ba745a950accc7a2b433
   m_configObjects: {}

@@ -19,6 +19,10 @@ public class RiskEvents : MonoBehaviour
     [SerializeField] private TextMeshProUGUI settlement;
     [SerializeField] private TextMeshProUGUI legalLoss;
     [SerializeField] private TextMeshProUGUI outcome;
+    [SerializeField] private Image outcomeImage;
+    [SerializeField] private Sprite[] possibleOutcomes; //0 is won, 1 is lost, 2 is settled
+    [SerializeField] private Color paperColor;
+    [SerializeField] private Animator outcomeAnim;
  
     private float numRolled;
 
@@ -36,6 +40,8 @@ public class RiskEvents : MonoBehaviour
     void ConductLawsuit()
     {
         outcome.text = " ";
+        outcomeImage.sprite = null;
+        outcomeImage.color = paperColor;
         Debug.Log("Lawsuit called");
         int _index = Random.Range(0, lawsuits.Length - 1);
 
@@ -57,8 +63,13 @@ public class RiskEvents : MonoBehaviour
         bankManager.ChangeBankStatement();
         bankManager.legalAnim.SetTrigger("LoseMoney");
 
-        outcome.color = Color.blue;
-        outcome.text = "Settled";
+        /*outcome.color = Color.blue;
+        outcome.text = "Settled";*/
+
+        outcomeAnim.SetTrigger("CaseOver");
+        outcomeImage.sprite = possibleOutcomes[2];
+        outcomeImage.color = Color.white;
+
         paperAnim.SetTrigger("StopLawsuit");
     }
 
@@ -74,14 +85,22 @@ public class RiskEvents : MonoBehaviour
             bankManager.ChangeBankStatement();
             bankManager.legalAnim.SetTrigger("LoseMoney");
             //Some visual indication that the case is lose
-            outcome.color = Color.red;
-            outcome.text = "Lost";
+            /* outcome.color = Color.red;
+             outcome.text = "Lost";*/
+
+            outcomeAnim.SetTrigger("CaseOver");
+            outcomeImage.sprite = possibleOutcomes[1];
+            outcomeImage.color = Color.white;
         }
         else
         {
             //Win
-            outcome.color = Color.green;
-            outcome.text = "Win";
+            /*outcome.color = Color.green;
+            outcome.text = "Win";*/
+            outcomeAnim.SetTrigger("CaseOver");
+            outcomeImage.sprite = possibleOutcomes[0];
+            outcomeImage.color = Color.white;
+            
         }
 
         paperAnim.SetTrigger("StopLawsuit");
