@@ -116,7 +116,7 @@ public class RiskEvents : MonoBehaviour
         float _seconds = Random.Range(rollTimeMin, rollTimeMax);
         yield return new WaitForSeconds(_seconds);
 
-        numRolled = Random.Range(0, 100);
+        numRolled = Random.Range(0, 101);
 
         if(numRolled <= bankManager.risk)
         {

@@ -19404,7 +19404,7 @@ MonoBehaviour:
   costOfFood: 30
   costOfRide: 15
   attendees: 0
-  ticketPrice: 50
+  ticketPrice: 75
   employees: 0
   salary: 15
   increaseRatePeople: 0

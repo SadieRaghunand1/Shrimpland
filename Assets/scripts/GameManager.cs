@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadMap()
     {
+        StartCoroutine(dialogueManager.HideDialogueBox(0));
         audioUI.audioSource.Play();
         //SceneManager.LoadScene(1);
         mapCanvas.enabled = true;

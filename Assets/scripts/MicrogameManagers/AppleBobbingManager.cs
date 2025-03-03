@@ -14,6 +14,8 @@ public class AppleBobbingManager : MicroGameBaseManager
     [SerializeField] private float cost;
     [SerializeField] private timer timerTime;
 
+    private List<GameObject> screwsSpawned;
+
     //private int count = 0;
 
     public override void StartGame()
@@ -49,6 +51,19 @@ public class AppleBobbingManager : MicroGameBaseManager
         timerTime.elapTime = 0;
 
         countFallen = 0;
+
+       /* for(int i = 0; i < screwsSpawned.Count; i++)
+        {
+            if (screwsSpawned[i] != null)
+            {
+                Destroy(screwsSpawned[i]);
+            }
+            
+        }*/
+
+        StopAllCoroutines();
+        //screwsSpawned.Clear();
+
         base.ResetGame();
     }
 
@@ -58,7 +73,8 @@ public class AppleBobbingManager : MicroGameBaseManager
 
         if(isBroken && bought)
         {
-            Instantiate(screwPrefab, spawnPoints[_index]);
+            GameObject _screw = Instantiate(screwPrefab, spawnPoints[_index]);
+           // screwsSpawned.Add(_screw);
         }
         else
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Image prawndice;
 
     [SerializeField] private AudioSource audioSource;
+    private float currentClipLength;
 
     [SerializeField] private Image textBox;
     public Dialogue[] intro;
@@ -62,6 +64,7 @@ public class DialogueManager : MonoBehaviour
                 textBox.enabled = false;
                 textMesh.enabled = false;
                 prawndice.enabled = false;
+                audioSource.Stop();
             }
             /*if(dialogueIndex == 1)
             {
@@ -78,7 +81,11 @@ public class DialogueManager : MonoBehaviour
                 ;
             }*/
         }
+
+        
     }
+
+    
 
 
     public IEnumerator PlayDialogue(Dialogue[] _currentSegement)
@@ -123,7 +130,18 @@ public class DialogueManager : MonoBehaviour
         textMesh.text = _currentSegment[0].dialogueTx;
 
         audioSource.clip = _currentSegment[0].spokenLine;
+        StartCoroutine(HideDialogueBox(_currentSegment[0].spokenLine.length));
         audioSource.Play();
+    }
+
+    public IEnumerator HideDialogueBox(float _delayStop)
+    {
+        yield return new WaitForSeconds(_delayStop);
+        currentlySpeaking = false;
+        textBox.enabled = false;
+        textMesh.enabled = false;
+        prawndice.enabled = false;
+        audioSource.Stop();
     }
     
 }

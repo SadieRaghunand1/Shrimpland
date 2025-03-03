@@ -20,6 +20,13 @@ public class MicroGameBaseManager : MonoBehaviour
     public int count;
 
     public ClickSound audioUI;
+
+
+    private void Start()
+    {
+        StartCoroutine(dialogueManager.HideDialogueBox(0));
+    }
+
     public virtual void StartGame()
     {
         audioUI.audioSource.Play();

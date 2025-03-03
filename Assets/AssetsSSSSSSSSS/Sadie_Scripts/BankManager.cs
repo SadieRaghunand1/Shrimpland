@@ -164,7 +164,7 @@ public class BankManager : MonoBehaviour
  
     public void IncreaseRisk(float _increase)
     {
-        if(risk < 1000)
+        if(risk < 100)
         risk += _increase;
         riskTx.text = risk.ToString() + "%";
     }
@@ -246,8 +246,11 @@ public class BankManager : MonoBehaviour
         //This does not change all in one go like employee salaries, instead more attendees there are the more often they are charged ticket price
         IncreaseBalance(ticketPrice * _attendeeChange);
         ticketGains += ticketPrice;
+        attractionGains += Random.Range(1, 5) * _attendeeChange;
+
         ChangeBankStatement();
 
+       
         if(ticketGains != _temp)
         {
             ticketAnim.SetTrigger("GetMoney");
@@ -433,6 +436,11 @@ public class BankManager : MonoBehaviour
         if(numItemsBought != 0)
         {
             increaseRatePeople = subtractRatePeople - (attendees + numItemsBought);
+
+            if(increaseRatePeople < 2)
+            {
+                increaseRatePeople = 2;
+            }
         }
         
 
