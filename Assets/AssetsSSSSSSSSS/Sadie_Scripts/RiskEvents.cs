@@ -29,6 +29,8 @@ public class RiskEvents : MonoBehaviour
     [SerializeField] private Transform lawInstancePos;
 
     [SerializeField] private Animator paperAnim;
+    [SerializeField] private Animator judgeAnim;
+    [SerializeField] private Animator gavelAnim;
 
     [SerializeField] private ClickSound audioL;
     private void Start()
@@ -55,6 +57,8 @@ public class RiskEvents : MonoBehaviour
         legalLoss.text = "$" + currentLawsuit.fightFee.ToString();
 
         paperAnim.SetTrigger("StartLawsuit");
+        judgeAnim.SetTrigger("StartLawsuit");
+        gavelAnim.SetTrigger("StartLawsuit");
     }
 
 
@@ -73,6 +77,8 @@ public class RiskEvents : MonoBehaviour
         outcomeImage.color = Color.white;
 
         paperAnim.SetTrigger("StopLawsuit");
+        judgeAnim.SetTrigger("StopLawsuit");
+        gavelAnim.SetTrigger("StopLawsuit");
     }
 
     public void FightLawsuit()
@@ -106,6 +112,8 @@ public class RiskEvents : MonoBehaviour
         }
 
         paperAnim.SetTrigger("StopLawsuit");
+        judgeAnim.SetTrigger("StopLawsuit");
+        gavelAnim.SetTrigger("StopLawsuit");
     }
 
 

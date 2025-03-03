@@ -246,7 +246,7 @@ public class BankManager : MonoBehaviour
         //This does not change all in one go like employee salaries, instead more attendees there are the more often they are charged ticket price
         IncreaseBalance(ticketPrice * _attendeeChange);
         ticketGains += ticketPrice;
-        attractionGains += Random.Range(1, 5) * _attendeeChange;
+        attractionGains += Random.Range(1, 10) * _attendeeChange;
 
         ChangeBankStatement();
 
