@@ -32,17 +32,25 @@ public class FacilityManager : MonoBehaviour
 
     [SerializeField] private Canvas map;
     [SerializeField] private Canvas sheet;
+    [SerializeField] private Canvas clipboardCanvas;
     public void Start()
     {
         bankManager = FindAnyObjectByType<BankManager>();
         gameManager = FindAnyObjectByType<GameManager>();
         loadBank.onClick.AddListener(() => { gameManager.LoadBankSheet(); });
+
+       
         //Test
        // FillInInfo(facilityIndex);
     }
 
     public void FillInInfo(int _index)
     {
+        if (clipboardCanvas.enabled == true)
+        {
+            clipboardCanvas.enabled = false;
+        }
+
         bought[_index] = true;
         //mapImages[_index].enabled = false;
         mapImages[_index].color = new Color(255, 255, 255, 0);

@@ -450,7 +450,7 @@ public class BankManager : MonoBehaviour
         {
             if (attendees % 20 == 0)
             {
-                ChangeEmployeesAndAttendees(1, 5);
+                ChangeEmployeesAndAttendees(1, 10);
                 StartCoroutine(WaitToChargeTickets());
             }
             else

@@ -21,14 +21,23 @@ public class MicroGameBaseManager : MonoBehaviour
 
     public ClickSound audioUI;
 
-
+    [SerializeField] private Canvas clipBoardCanavs;
     private void Start()
     {
         StartCoroutine(dialogueManager.HideDialogueBox(0));
+
+       
+
     }
 
     public virtual void StartGame()
     {
+
+        if (clipBoardCanavs.enabled == true)
+        {
+            clipBoardCanavs.enabled = false;
+        }
+
         audioUI.audioSource.Play();
         //mapImage.enabled = false;
         mapImage.color = new Color(255, 255, 255, 0);

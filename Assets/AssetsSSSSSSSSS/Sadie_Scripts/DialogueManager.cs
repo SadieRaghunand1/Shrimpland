@@ -29,6 +29,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     private float currentClipLength;
 
+    [SerializeField] TextMeshProUGUI pressSpace;
+
     [SerializeField] private Image textBox;
     public Dialogue[] intro;
     public Dialogue[] bankBalanceTutoial;
@@ -64,6 +66,7 @@ public class DialogueManager : MonoBehaviour
                 textBox.enabled = false;
                 textMesh.enabled = false;
                 prawndice.enabled = false;
+                pressSpace.enabled = false;
                 audioSource.Stop();
             }
             /*if(dialogueIndex == 1)
@@ -124,6 +127,7 @@ public class DialogueManager : MonoBehaviour
         currentlySpeaking = true;
         textBox.enabled = true;
         textMesh.enabled = true;
+        //pressSpace.enabled = true;
         prawndice.GetComponent<Image>().enabled = true;
         prawndice.GetComponent<Image>().sprite = _currentSegment[0].prawndice;
 

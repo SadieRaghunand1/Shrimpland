@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas mapCanvas;
     [SerializeField] private Canvas facilitySheetCanvas;
     [SerializeField] private Canvas bankSheetCanvas;
+    [SerializeField] private Canvas clipBoardCanvas;
     [SerializeField] private Canvas otherCanvas;
 
     int countBank = 0;
@@ -43,6 +44,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadMap()
     {
+        if(clipBoardCanvas.enabled == true)
+        {
+            clipBoardCanvas.enabled = false;
+        }
         StartCoroutine(dialogueManager.HideDialogueBox(0));
         audioUI.audioSource.Play();
         //SceneManager.LoadScene(1);
