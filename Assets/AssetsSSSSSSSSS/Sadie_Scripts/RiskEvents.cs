@@ -59,6 +59,9 @@ public class RiskEvents : MonoBehaviour
         paperAnim.SetTrigger("StartLawsuit");
         judgeAnim.SetTrigger("StartLawsuit");
         gavelAnim.SetTrigger("StartLawsuit");
+
+        outcomeImage.sprite = null;
+        outcomeImage.color = paperColor;
     }
 
 
@@ -128,6 +131,8 @@ public class RiskEvents : MonoBehaviour
 
         if(numRolled <= bankManager.risk)
         {
+            outcomeImage.sprite = null;
+            outcomeImage.color = paperColor;
             ConductLawsuit();
         }
 
